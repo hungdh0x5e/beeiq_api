@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'beeiq'
+gem 'beeiq_api'
 ```
 
 And then execute:
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install beeiq
+    $ gem install beeiq_api
 
 ## Usage
 
@@ -22,18 +22,18 @@ Or install it yourself as:
 
 **Ruby**
 ```ruby
-client = Beeiq::Client.new(webhook_url, sender_email)
+client = BeeiqAPI::Client.new(webhook_url, sender_email)
 ```
 
 **Rails**
 ```ruby
 # in file: config/initialize/beeiq.rb
-Beeiq.configure do |config|
+BeeiqAPI.configure do |config|
   config.webhook_url = 'https://github.com'
   config.sender_email = 'huyhung1994@gmail.com'
 end
 
-client = Beeiq::Client.new
+client = BeeiqAPI::Client.new
 ```
 
 #### **Create ticket**

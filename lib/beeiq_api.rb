@@ -2,6 +2,7 @@ require "beeiq_api/version"
 require "beeiq_api/config"
 require "beeiq_api/response"
 require "beeiq_api/ticket"
+require 'configuration'
 require 'rest-client'
 require 'json'
 
