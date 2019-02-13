@@ -2,6 +2,7 @@ require "beeiq_api/version"
 require "beeiq_api/config"
 require "beeiq_api/response"
 require "beeiq_api/ticket"
+require "beeiq_api/contact"
 require 'configuration'
 require 'rest-client'
 require 'json'
@@ -33,11 +34,22 @@ module BeeiqAPI
       process(:post, payload)
     end
 
+    def create_contact(data = {})
+      create_many_contact([data])
+    end
+
+    def create_many_contact(data = [])
+      payload = build_payload(Config::ActionType::ADD_CONTACT, data)
+      process(:post, payload)
+    end
+
     def build_payload(action, data)
       payload =
         case action
         when Config::ActionType::ADD_TICKET
           build_ticket_payload(data)
+        when Config::ActionType::ADD_CONTACT
+          build_contact_payload(data)
         end
 
       {
@@ -52,6 +64,16 @@ module BeeiqAPI
         {
           actionType: Config::ActionType::ADD_TICKET,
           data: ticket.payload
+        }
+      end
+    end
+
+    def build_contact_payload(data)
+      data.map do |item|
+        contact = BeeiqAPI::Contact.new item
+        {
+          actionType: Config::ActionType::ADD_CONTACT,
+          data: contact.payload
         }
       end
     end
