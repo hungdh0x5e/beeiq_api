@@ -14,7 +14,7 @@ module BeeiqAPI
     attr_accessor :tag
 
     def initialize(options = {})
-      @contactType = options[:contact_type] || Config::ContactType::CUSTOMER
+      @contact_type = options[:contact_type] || Config::ContactType::CUSTOMER
       @title = options[:title]
       @body = options[:body]
       @email = options[:email]
