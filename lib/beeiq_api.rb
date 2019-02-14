@@ -38,6 +38,7 @@ module BeeiqAPI
     end
 
     def create_many_contact(data = [])
+      create_or_update_contact(Config::ActionType::ADD_CONTACT, data)
     end
 
     def update_contact(data = {})

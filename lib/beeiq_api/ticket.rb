@@ -34,7 +34,7 @@ module BeeiqAPI
       data = {
         contactType: @contact_type,
         title: @title,
-        body: @body,
+        body: @body.to_s.gsub("\n", '<br>'),
         email: @email,
         phone: @phone,
         name: @name,
